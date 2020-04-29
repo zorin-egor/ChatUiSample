@@ -6,14 +6,15 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.sample.libchat.ui.adapter.items.ChatImageCompanionItem
-import com.sample.libchat.ui.adapter.items.ChatImageUserItem
-import com.sample.libchat.ui.adapter.items.ChatMessageCompanionItem
-import com.sample.libchat.ui.adapter.items.ChatMessageUserItem
+import com.google.android.material.snackbar.Snackbar
+import com.sample.libchat.ui.adapter.base.OnItemClickListener
+import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
+import com.sample.libchat.ui.adapter.items.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener,
+    OnItemClickListener<ChatBaseItem>, OnItemLongClickListener<ChatBaseItem> {
 
     private val mMessages by lazy {
         listOf(
@@ -94,10 +95,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onItemClick(item: ChatBaseItem, view: View, position: Int) {
+        Snackbar.make(findViewById(android.R.id.content), "Position clicked: $position", Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onItemLongClick(item: ChatBaseItem, view: View, position: Int): Boolean {
+        Snackbar.make(findViewById(android.R.id.content), "Position deleted: $position", Snackbar.LENGTH_SHORT).show()
+        chatView.deleteMessage(item)
+        return true
+    }
+
     private fun init(savedInstanceState: Bundle?) {
         chatView.apply {
             onSendClick = this@MainActivity
             onCameraClick = this@MainActivity
+            onItemClick = this@MainActivity
+            onItemLongClick = this@MainActivity
         }
 
         mMessages.forEach {

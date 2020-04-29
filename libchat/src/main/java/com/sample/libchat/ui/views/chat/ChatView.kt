@@ -17,10 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sample.libchat.R
 import com.sample.libchat.ui.adapter.ChatAdapter
+import com.sample.libchat.ui.adapter.base.OnItemClickListener
+import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import kotlinx.android.synthetic.main.view_chat_edit.view.*
 
-open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.OnClickListener {
+open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.OnClickListener,
+    OnItemClickListener<ChatBaseItem>, OnItemLongClickListener<ChatBaseItem> {
 
     companion object {
         val TAG = ChatView::class.java.simpleName
@@ -45,6 +48,10 @@ open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.On
     var onSendClick: OnClickListener? = null
 
     var onCameraClick: OnClickListener? = null
+
+    var onItemClick: OnItemClickListener<ChatBaseItem>? = null
+
+    var onItemLongClick: OnItemLongClickListener<ChatBaseItem>? = null
 
     protected lateinit var mLayoutManager: LinearLayoutManager
 
@@ -86,6 +93,14 @@ open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.On
         return true
     }
 
+    override fun onItemClick(item: ChatBaseItem, view: View, position: Int) {
+        onItemClick?.onItemClick(item, view, position)
+    }
+
+    override fun onItemLongClick(item: ChatBaseItem, view: View, position: Int): Boolean {
+        return onItemLongClick?.onItemLongClick(item, view, position) ?: false
+    }
+
     protected fun init(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int? = null) {
         initMessageEdit(context, attrs, defStyleAttr)
         initMessageList(context, attrs, defStyleAttr)
@@ -123,8 +138,10 @@ open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.On
                 mLayoutAnimation = it
             }
 
-            adapter = ChatAdapter().also {
-                mAdapter = it
+            adapter = ChatAdapter().apply {
+                mAdapter = this
+                onItemClickListener = this@ChatView
+                onItemLongClickListener = this@ChatView
             }
 
             id = View.generateViewId()

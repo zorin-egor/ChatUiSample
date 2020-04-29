@@ -14,12 +14,12 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sample.libchat.R
-import com.sample.libchat.ui.adapter.base.BaseAdapter
+import com.sample.libchat.ui.adapter.base.OnItemClickListener
+import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatItemPosition
 import com.sample.libchat.ui.views.drawable.BitmapRoundRectDrawable
 import kotlinx.android.synthetic.main.list_item_chat.view.*
-
 
 
 open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -31,7 +31,9 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
         }
     }
 
-    var onClickListener: BaseAdapter.OnItemClickListener<ChatBaseItem>? = null
+    var onClickListener: OnItemClickListener<ChatBaseItem>? = null
+
+    var onLongClickListener: OnItemLongClickListener<ChatBaseItem>? = null
 
     protected val mContainerLayout: ConstraintLayout
         get() = view.chatItemLayout
@@ -82,6 +84,10 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
             isClickable = true
             setOnClickListener {
                 onClickListener?.onItemClick(mChatItem, mContainerItem, layoutPosition)
+            }
+
+            setOnLongClickListener {
+                onLongClickListener?.onItemLongClick(mChatItem, mContainerItem, layoutPosition) ?: false
             }
         }
     }

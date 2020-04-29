@@ -4,14 +4,18 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
+
+@FunctionalInterface
+interface OnItemLongClickListener<T> {
+    fun onItemLongClick(item: T, view: View, position: Int): Boolean
+}
+
+@FunctionalInterface
+interface OnItemClickListener<T> {
+    fun onItemClick(item: T, view: View, position: Int)
+}
+
 abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    @FunctionalInterface
-    interface OnItemClickListener<T> {
-        fun onItemClick(item: T, view: View, position: Int)
-    }
-
-    var onItemClickListener: OnItemClickListener<D>? = null
 
     lateinit var list: MutableList<D>
 
@@ -52,8 +56,11 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     }
 
     fun remove(item: D) {
-        list.remove(item)
-        notifyDataSetChanged()
+        val index = list.indexOf(item)
+        if (index >= 0) {
+            list.removeAt(index)
+            notifyItemRemoved(index)
+        }
     }
 
     fun update(item: D) {
