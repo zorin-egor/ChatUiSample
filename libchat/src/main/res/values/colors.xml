@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Solid colors -->
+    <color name="colorWhite">#ffffff</color>
+
+    <!-- Tint colors -->
+    <color name="colorDarkTint">#de000000</color>
+    <color name="colorGreyMidTint">#61000000</color>
+    <color name="colorGreyLowTint">#18000000</color>
+
+    <!-- Ripple -->
+    <color name="colorRipple">#1f000000</color>
+
+    <!-- Chat -->
+    <color name="colorChatBackground">#505050</color>
+
+</resources>

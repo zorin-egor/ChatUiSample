@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chatImageTitleLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/chatImageTitleImage"
+        android:layout_width="@dimen/chat_image_title_image_size"
+        android:layout_height="@dimen/chat_image_title_image_size"
+        android:src="@drawable/ic_pic_black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chatImageTitleText"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/chatImageTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/chat_image_title_text_size"
+        android:text="99"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/default_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chatImageTitleImage"
+        app:layout_constraintBottom_toBottomOf="@+id/chatImageTitleImage"
+        app:layout_constraintStart_toEndOf="@+id/chatImageTitleImage"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

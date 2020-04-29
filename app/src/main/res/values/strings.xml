@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ChatUiSample</string>
+
+    <string name="chat_message_hello">Hello world!</string>
+    <string name="chat_message_info">This is sample app for chat ui</string>
+    <string name="chat_message_companion">Hello from companion!</string>
+
+</resources>

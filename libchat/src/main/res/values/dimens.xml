@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Default values -->
+    <dimen name="default_corner_radius">2dp</dimen>
+    <dimen name="default_elevation_height">4dp</dimen>
+    <dimen name="default_tab_layout_height">48dp</dimen>
+    <dimen name="default_screen_width">300dp</dimen>
+    <dimen name="default_stroke">1dp</dimen>
+    <dimen name="default_status_bar_height">25dp</dimen>
+    <dimen name="default_status_bar_height_margin">33dp</dimen>
+    <dimen name="default_toolbar_height">56dp</dimen>
+
+    <!-- Margins/Padding -->
+    <dimen name="default_xxxlarge">48dp</dimen>
+    <dimen name="default_xxlarge">32dp</dimen>
+    <dimen name="default_xlarge">24dp</dimen>
+    <dimen name="default_large">16dp</dimen>
+    <dimen name="default_medium">8dp</dimen>
+    <dimen name="default_small">4dp</dimen>
+    <dimen name="default_micro">2dp</dimen>
+
+    <!-- Fonts sizes-->
+    <dimen name="fonts_size_large">18sp</dimen>
+    <dimen name="fonts_size_medium">16sp</dimen>
+    <dimen name="fonts_size_small">14sp</dimen>
+    <dimen name="fonts_size_mini">12sp</dimen>
+    <dimen name="fonts_size_micro">10sp</dimen>
+
+    <!-- Corners -->
+    <dimen name="corners_radius_micro">2dp</dimen>
+    <dimen name="corners_radius_small">4dp</dimen>
+    <dimen name="corners_radius_medium">8dp</dimen>
+    <dimen name="corners_radius_large">16dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="default_button_width">240dp</dimen>
+    <dimen name="default_button_width_extra">300dp</dimen>
+    <dimen name="default_button_height">48dp</dimen>
+    <dimen name="default_button_image_size">40dp</dimen>
+
+    <!-- Edit -->
+    <dimen name="default_edit_width">300dp</dimen>
+    <dimen name="default_edit_height">54dp</dimen>
+
+    <!-- Text -->
+    <dimen name="default_text_width">300dp</dimen>
+    <dimen name="default_text_height">54dp</dimen>
+
+    <!-- Image -->
+    <dimen name="default_icon_size">30dp</dimen>
+
+    <!-- Chat -->
+    <dimen name="chat_image_size">200dp</dimen>
+    <dimen name="chat_image_margin">8dp</dimen>
+    <dimen name="chat_image_title_image_size">32dp</dimen>
+    <dimen name="chat_image_title_text_size">32sp</dimen>
+    <dimen name="chat_bottom_text_size">6sp</dimen>
+
+</resources>
