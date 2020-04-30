@@ -108,7 +108,7 @@ class BitmapRoundRectDrawable : Drawable() {
         if (bitmap != null && mBitmapShader != null) {
             val ratioX =  canvas.width / bitmap!!.width.toFloat()
             val ratioY =  canvas.height / bitmap!!.height.toFloat()
-            val ratioMax = Math.max(ratioX, ratioY)
+            val ratioMax = ratioX.coerceAtLeast(ratioY)
             val offsetX = (bitmap!!.width * ratioMax - canvas.width) / 2
             val offsetY = (bitmap!!.height * ratioMax - canvas.height) / 2
 
