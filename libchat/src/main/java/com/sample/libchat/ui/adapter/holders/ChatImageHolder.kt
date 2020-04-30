@@ -122,22 +122,18 @@ class ChatImageHolder(view: View) : ChatBaseHolder(view) {
 
             if (isLast) {
                 mContent.addView(getTitle(margins))
-                roundImage.setOnClickListener {
-                    onClickListener?.onItemClick(mChatItem, mContainerItem, layoutPosition)
-                }
             }
         }
     }
 
     private fun getRoundImageView(drawable: Drawable, isFirst: Boolean, margins: Int): AppCompatImageView {
         return AppCompatImageView(mContext).apply {
-            val params = FrameLayout.LayoutParams(mImageWidth, mImageHeight)
-            params.gravity = Gravity.RIGHT or Gravity.BOTTOM
-            params.rightMargin = margins
-            params.bottomMargin = margins
-            layoutParams = params
             background = drawable
-            isClickable = isFirst
+            layoutParams = FrameLayout.LayoutParams(mImageWidth, mImageHeight).apply {
+                gravity = Gravity.RIGHT or Gravity.BOTTOM
+                rightMargin = margins
+                bottomMargin = margins
+            }
         }
     }
 

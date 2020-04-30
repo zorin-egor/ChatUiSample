@@ -19,6 +19,7 @@ import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatItemPosition
 import com.sample.libchat.ui.views.drawable.BitmapRoundRectDrawable
+import com.sample.libchat.utils.getChildren
 import kotlinx.android.synthetic.main.list_item_chat.view.*
 
 
@@ -65,7 +66,7 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
     }
 
     protected lateinit var mChatItem: ChatBaseItem
-    protected lateinit var mViewContainer: View
+    protected lateinit var mViewItem: View
     protected var mContainerLayoutSize: Size? = null
 
     init {
@@ -73,15 +74,28 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
     }
 
     protected fun addView(content: View) {
-        mViewContainer = content.apply {
+        mViewItem = content.apply {
             layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT).apply {
                 gravity = Gravity.CENTER
+            }
+
+            isClickable = false
+            isFocusable = false
+            isFocusableInTouchMode = false
+
+            getChildren { view ->
+                view.isClickable = false
+                view.isFocusable = false
+                view.isFocusableInTouchMode = false
             }
         }
 
         mContainerItem.apply {
-            addView(mViewContainer)
+            addView(mViewItem)
             isClickable = true
+            isFocusable = true
+            isFocusableInTouchMode = true
+
             setOnClickListener {
                 onClickListener?.onItemClick(mChatItem, mContainerItem, layoutPosition)
             }
@@ -175,15 +189,15 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
     protected open fun setViewItemLayoutParams() {
         when {
             mChatItem.width != null || mChatItem.height != null -> {
-                var width = mChatItem.width ?: mViewContainer.layoutParams.width
-                var height = mChatItem.height ?: mViewContainer.layoutParams.height
-                mViewContainer.layoutParams = FrameLayout.LayoutParams(width, height).apply {
+                var width = mChatItem.width ?: mViewItem.layoutParams.width
+                var height = mChatItem.height ?: mViewItem.layoutParams.height
+                mViewItem.layoutParams = FrameLayout.LayoutParams(width, height).apply {
                     gravity = Gravity.CENTER
                 }
             }
 
             else -> {
-                mViewContainer.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT).apply {
+                mViewItem.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT).apply {
                     gravity = Gravity.CENTER
                 }
             }
