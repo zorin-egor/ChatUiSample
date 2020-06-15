@@ -1,4 +1,4 @@
-package com.sample.libchat.utils
+package com.sample.libchat.extensions
 
 import android.os.Build
 import android.text.Html

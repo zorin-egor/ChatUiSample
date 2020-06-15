@@ -14,12 +14,12 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.sample.libchat.R
+import com.sample.libchat.extensions.getChildren
 import com.sample.libchat.ui.adapter.base.OnItemClickListener
 import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatItemPosition
 import com.sample.libchat.ui.views.drawable.BitmapRoundRectDrawable
-import com.sample.libchat.utils.getChildren
 import kotlinx.android.synthetic.main.list_item_chat.view.*
 
 

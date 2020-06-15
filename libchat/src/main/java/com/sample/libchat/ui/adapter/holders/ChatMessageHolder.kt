@@ -7,9 +7,9 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.sample.libchat.R
+import com.sample.libchat.extensions.toSpanned
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatMessageItem
-import com.sample.libchat.utils.toSpanned
 import kotlinx.android.synthetic.main.view_chat_item_message.view.*
 
 class ChatMessageHolder(view: View) : ChatBaseHolder(view) {
