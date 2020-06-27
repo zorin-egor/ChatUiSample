@@ -13,7 +13,6 @@ import com.sample.libchat.ui.adapter.holders.ChatMessageHolder
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatImageItem
 import com.sample.libchat.ui.adapter.items.ChatMessageItem
-import java.util.*
 
 
 class ChatAdapter : BaseAdapter<ChatBaseItem>() {
@@ -28,7 +27,7 @@ class ChatAdapter : BaseAdapter<ChatBaseItem>() {
     var onItemLongClickListener: OnItemLongClickListener<ChatBaseItem>? = null
 
     init {
-        list = LinkedList()
+        list = ArrayList()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatBaseHolder {
