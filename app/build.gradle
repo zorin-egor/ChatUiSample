@@ -2,7 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
+
     compileSdkVersion SDK_MAX
     buildToolsVersion BUILD_TOOL
 
