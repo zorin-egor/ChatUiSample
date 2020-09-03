@@ -53,6 +53,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
         init(savedInstanceState)
     }
 
+    override fun onStop() {
+        super.onStop()
+        mMessageHandler.removeCallbacksAndMessages(null)
+    }
+
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.chatSendButton -> {
