@@ -59,18 +59,8 @@ class ChatImageHolder(view: View) : ChatBaseHolder(view) {
     
     override fun bind(item : ChatBaseItem) {
         mImageItem = item as ChatImageItem
-
-        mImageWidth = if (mImageItem.previewWidth != null) {
-            mImageItem.previewWidth!!
-        } else {
-            mImageSize
-        }
-
-        mImageHeight = if (mImageItem.previewHeight != null) {
-            mImageItem.previewHeight!!
-        } else {
-            mImageSize
-        }
+        mImageWidth = mImageItem.previewWidth ?: mImageSize
+        mImageHeight = mImageItem.previewHeight ?: mImageSize
 
         if (mImageItem.image != null) {
             mImageItem.width = null
@@ -130,7 +120,7 @@ class ChatImageHolder(view: View) : ChatBaseHolder(view) {
         return AppCompatImageView(mContext).apply {
             background = drawable
             layoutParams = FrameLayout.LayoutParams(mImageWidth, mImageHeight).apply {
-                gravity = Gravity.RIGHT or Gravity.BOTTOM
+                gravity = Gravity.END or Gravity.BOTTOM
                 rightMargin = margins
                 bottomMargin = margins
             }
@@ -140,18 +130,13 @@ class ChatImageHolder(view: View) : ChatBaseHolder(view) {
     private fun getTitle(margins: Int): View {
         mTitleText.text = mImageItem.count.toString()
         mTitleText.setTextColor(ContextCompat.getColor(mContext, mImageItem.color))
-
-        mTitleImage.visibility = if (mImageItem.imageTextIcon != null) {
-            mTitleImage.setImageResource(mImageItem.imageTextIcon)
-            mTitleImage.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(mContext, mImageItem.color))
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+        mTitleImage.setImageResource(mImageItem.imageTextIcon)
+        mTitleImage.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(mContext, mImageItem.color))
+        mTitleImage.visibility = View.VISIBLE
 
         return mTitleLayout.apply {
             val params = FrameLayout.LayoutParams(mImageWidth, mImageHeight)
-            params.gravity =  Gravity.RIGHT or Gravity.BOTTOM
+            params.gravity =  Gravity.END or Gravity.BOTTOM
             params.rightMargin = margins
             params.bottomMargin = margins
             layoutParams = params

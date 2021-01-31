@@ -64,8 +64,8 @@ class BitmapRoundRectDrawable : Drawable() {
         val rect = RectF().apply {
             left = shadowSize
             top = shadowSize
-            right = canvas.width - shadowSize
-            bottom = canvas.height - shadowSize
+            right = bounds.width() - shadowSize
+            bottom = bounds.height() - shadowSize
         }
 
         drawColorBackground(canvas, rect)
@@ -105,14 +105,16 @@ class BitmapRoundRectDrawable : Drawable() {
     }
 
     private fun drawBitmapBackground(canvas: Canvas, rect: RectF) {
-        if (bitmap != null && mBitmapShader != null) {
-            val ratioX =  canvas.width / bitmap!!.width.toFloat()
-            val ratioY =  canvas.height / bitmap!!.height.toFloat()
+        val bmp = bitmap
+        val shader = mBitmapShader
+        if (bmp != null && shader != null) {
+            val ratioX =  canvas.width / bmp.width.toFloat()
+            val ratioY =  canvas.height / bmp.height.toFloat()
             val ratioMax = ratioX.coerceAtLeast(ratioY)
-            val offsetX = (bitmap!!.width * ratioMax - canvas.width) / 2
-            val offsetY = (bitmap!!.height * ratioMax - canvas.height) / 2
+            val offsetX = (bmp.width * ratioMax - canvas.width) / 2
+            val offsetY = (bmp.height * ratioMax - canvas.height) / 2
 
-            mPaintBackground.shader = mBitmapShader!!.apply {
+            mPaintBackground.shader = shader.apply {
                 val values = FloatArray(9)
                 val matrix = Matrix()
                 getLocalMatrix(matrix)

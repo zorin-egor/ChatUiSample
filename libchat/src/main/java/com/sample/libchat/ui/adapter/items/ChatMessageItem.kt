@@ -9,12 +9,12 @@ abstract class ChatMessageItem : ChatBaseItem() {
     @ColorRes
     var headerTextColor: Int = R.color.colorDarkTint
 
-    var headerTextGravity: Int = Gravity.LEFT or Gravity.CENTER_VERTICAL
+    var headerTextGravity: Int = Gravity.START or Gravity.CENTER_VERTICAL
 
     @ColorRes
     var contentTextColor: Int = R.color.colorDarkTint
 
-    var contentTextGravity: Int = Gravity.LEFT or Gravity.CENTER_VERTICAL
+    var contentTextGravity: Int = Gravity.START or Gravity.CENTER_VERTICAL
 
     var message: String = ""
 }

@@ -174,8 +174,8 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
             applyTo(mContainerLayout)
         }
 
-        var leftPadding = mChatItem.paddingLeft?.let { mContext.resources.getDimensionPixelSize(it) } ?: 0
-        var rightPadding = mChatItem.paddingRight?.let { mContext.resources.getDimensionPixelSize(it) } ?: 0
+        val leftPadding = mChatItem.paddingLeft?.let(mContext.resources::getDimensionPixelSize) ?: 0
+        val rightPadding = mChatItem.paddingRight?.let(mContext.resources::getDimensionPixelSize) ?: 0
         mContainerLayout.setPadding(leftPadding, 0, rightPadding, 0)
     }
 
@@ -189,13 +189,12 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
     protected open fun setViewItemLayoutParams() {
         when {
             mChatItem.width != null || mChatItem.height != null -> {
-                var width = mChatItem.width ?: mViewItem.layoutParams.width
-                var height = mChatItem.height ?: mViewItem.layoutParams.height
+                val width = mChatItem.width ?: mViewItem.layoutParams.width
+                val height = mChatItem.height ?: mViewItem.layoutParams.height
                 mViewItem.layoutParams = FrameLayout.LayoutParams(width, height).apply {
                     gravity = Gravity.CENTER
                 }
             }
-
             else -> {
                 mViewItem.layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT).apply {
                     gravity = Gravity.CENTER

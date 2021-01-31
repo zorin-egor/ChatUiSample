@@ -14,13 +14,14 @@ abstract class BaseEndListener : RecyclerView.OnScrollListener() {
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
         super.onScrollStateChanged(recyclerView, newState)
         if (newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-            val layoutManager = recyclerView.layoutManager as LinearLayoutManager?
-            val visibleItemCount = layoutManager!!.childCount
-            val totalItemCount = layoutManager.itemCount
-            val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
-            if (mIsDown && visibleItemCount + firstVisibleItemPosition >= totalItemCount - VISIBLE_THRESHOLD) {
-                mIsDown = false
-                onListEnd()
+            (recyclerView.layoutManager as? LinearLayoutManager)?.let { manager ->
+                val visibleItemCount = manager.childCount
+                val totalItemCount = manager.itemCount
+                val firstVisibleItemPosition = manager.findFirstVisibleItemPosition()
+                if (mIsDown && visibleItemCount + firstVisibleItemPosition >= totalItemCount - VISIBLE_THRESHOLD) {
+                    mIsDown = false
+                    onListEnd()
+                }
             }
         }
     }

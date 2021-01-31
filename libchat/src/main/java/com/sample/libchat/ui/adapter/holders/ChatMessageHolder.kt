@@ -50,18 +50,12 @@ class ChatMessageHolder(view: View) : ChatBaseHolder(view) {
     }
 
     private fun setBottomText() {
-        mContentText.visibility = if (mMessageItem.message != null) {
-            mContentText.text = mMessageItem.message
-                .replace("\n", "<br>")
-                .replace(" ", "&nbsp;")
-                .toSpanned()
-
-            mContentText.gravity = mMessageItem.contentTextGravity
-            mContentText.setTextColor(ContextCompat.getColor(mContext, mMessageItem.contentTextColor))
-            View.VISIBLE
-        } else {
-            mContentText.text = ""
-            View.GONE
-        }
+        mContentText.text = mMessageItem.message
+            .replace("\n", "<br>")
+            .replace(" ", "&nbsp;")
+            .toSpanned()
+        mContentText.gravity = mMessageItem.contentTextGravity
+        mContentText.setTextColor(ContextCompat.getColor(mContext, mMessageItem.contentTextColor))
+        mContentText.visibility = View.VISIBLE
     }
 }
