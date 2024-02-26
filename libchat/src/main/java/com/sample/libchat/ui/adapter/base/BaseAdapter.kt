@@ -1,5 +1,6 @@
 package com.sample.libchat.ui.adapter.base
 
+import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -17,7 +18,7 @@ interface OnItemClickListener<T> {
 
 abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    lateinit var list: MutableList<D>
+    protected var list: MutableList<D> = ArrayList()
 
     override fun getItemCount(): Int = list.size
 
@@ -31,8 +32,9 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         notifyItemRangeInserted(0, items.size)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setItems(items: List<D>) {
-        list = LinkedList(items)
+        list = ArrayList(items)
         notifyDataSetChanged()
     }
 
@@ -50,6 +52,7 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
         return list[index]
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clear() {
         list.clear()
         notifyDataSetChanged()

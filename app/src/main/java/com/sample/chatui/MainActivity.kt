@@ -9,8 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.sample.libchat.ui.adapter.base.OnItemClickListener
 import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
-import com.sample.libchat.ui.adapter.items.*
-import kotlinx.android.synthetic.main.activity_main.*
+import com.sample.libchat.ui.adapter.items.ChatBaseItem
+import com.sample.libchat.ui.adapter.items.ChatImageCompanionItem
+import com.sample.libchat.ui.adapter.items.ChatImageUserItem
+import com.sample.libchat.ui.adapter.items.ChatMessageCompanionItem
+import com.sample.libchat.ui.adapter.items.ChatMessageUserItem
+import com.sample.libchat.ui.views.chat.ChatView
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), View.OnClickListener,
@@ -47,6 +51,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
     private val mMessageHandler = Handler(Looper.getMainLooper())
     private var mMessageCount: Int = 0
 
+    private val chatView: ChatView
+        get() = findViewById(R.id.chatView)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -60,7 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.chatSendButton -> {
+            com.sample.libchat.R.id.chatSendButton -> {
                 chatView.addMessage(if (Random.nextBoolean()) {
                     ChatMessageUserItem().apply {
                         message = chatView.messageText
@@ -72,7 +79,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener,
                 })
             }
 
-            R.id.chatCameraButton -> {
+            com.sample.libchat.R.id.chatCameraButton -> {
                 chatView.addMessage(when (Random.nextInt(4)) {
                     0 -> {
                         ChatImageUserItem().apply {

@@ -20,7 +20,6 @@ import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatItemPosition
 import com.sample.libchat.ui.views.drawable.BitmapRoundRectDrawable
-import kotlinx.android.synthetic.main.list_item_chat.view.*
 
 
 open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view) {
@@ -37,10 +36,10 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
     var onLongClickListener: OnItemLongClickListener<ChatBaseItem>? = null
 
     protected val mContainerLayout: ConstraintLayout
-        get() = view.chatItemLayout
+        get() = view.findViewById(R.id.chatItemLayout)
 
     protected val mContainerItem: FrameLayout
-        get() = view.chatItemContainer
+        get() = view.findViewById(R.id.chatItemContainer)
 
     protected val mContext: Context
         get() = mContainerLayout.context
@@ -126,6 +125,7 @@ open class ChatBaseHolder(private val view: View) : RecyclerView.ViewHolder(view
         when(item.position) {
             ChatItemPosition.LEFT -> { item.cornerLeftBottom = 0.0f }
             ChatItemPosition.RIGHT -> { item.cornerRightBottom = 0.0f }
+            else -> {}
         }
 
         var drawable: Drawable = BitmapRoundRectDrawable().apply {

@@ -1,10 +1,19 @@
 package com.sample.libchat.ui.views.drawable
 
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.BitmapShader
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.Matrix
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.PixelFormat
+import android.graphics.RectF
+import android.graphics.Shader
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.core.graphics.transform
-
 
 class BitmapRoundRectDrawable : Drawable() {
 

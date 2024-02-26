@@ -15,7 +15,6 @@ import androidx.core.content.ContextCompat
 import com.sample.libchat.R
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatImageItem
-import kotlinx.android.synthetic.main.view_chat_item_image.view.*
 
 
 class ChatImageHolder(view: View) : ChatBaseHolder(view) {
@@ -36,10 +35,10 @@ class ChatImageHolder(view: View) : ChatBaseHolder(view) {
             .inflate(R.layout.view_chat_item_image, view as ViewGroup, false) as ConstraintLayout
 
     private val mTitleImage: AppCompatImageView
-        get() = mTitleLayout.chatImageTitleImage
+        get() = mTitleLayout.findViewById(R.id.chatImageTitleImage)
 
     private val mTitleText: AppCompatTextView
-        get() = mTitleLayout.chatImageTitleText
+        get() = mTitleLayout.findViewById(R.id.chatImageTitleText)
 
     private val mImageSize: Int by lazy {
         mContext.resources.getDimensionPixelSize(R.dimen.chat_image_size)

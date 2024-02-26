@@ -26,10 +26,6 @@ class ChatAdapter : BaseAdapter<ChatBaseItem>() {
 
     var onItemLongClickListener: OnItemLongClickListener<ChatBaseItem>? = null
 
-    init {
-        list = ArrayList()
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatBaseHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_chat, parent, false)
         return when(viewType) {

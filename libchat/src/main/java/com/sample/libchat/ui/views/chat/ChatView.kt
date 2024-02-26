@@ -20,7 +20,6 @@ import com.sample.libchat.ui.adapter.ChatAdapter
 import com.sample.libchat.ui.adapter.base.OnItemClickListener
 import com.sample.libchat.ui.adapter.base.OnItemLongClickListener
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
-import kotlinx.android.synthetic.main.view_chat_edit.view.*
 
 open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.OnClickListener,
     OnItemClickListener<ChatBaseItem>, OnItemLongClickListener<ChatBaseItem> {
@@ -34,13 +33,13 @@ open class ChatView : ConstraintLayout, TextView.OnEditorActionListener, View.On
     lateinit var messageListView: RecyclerView
 
     val sendButton: AppCompatImageButton
-        get() = messageEditLayout.chatSendButton
+        get() = messageEditLayout.findViewById(R.id.chatSendButton)
 
     val cameraButton: AppCompatImageButton
-        get() = messageEditLayout.chatCameraButton
+        get() = messageEditLayout.findViewById(R.id.chatCameraButton)
 
     val messageEdit: AppCompatEditText
-        get() = messageEditLayout.chatEditText
+        get() = messageEditLayout.findViewById(R.id.chatEditText)
 
     val messageText: String
         get() = messageEdit.text?.toString() ?: ""

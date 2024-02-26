@@ -10,7 +10,6 @@ import com.sample.libchat.R
 import com.sample.libchat.extensions.toSpanned
 import com.sample.libchat.ui.adapter.items.ChatBaseItem
 import com.sample.libchat.ui.adapter.items.ChatMessageItem
-import kotlinx.android.synthetic.main.view_chat_item_message.view.*
 
 class ChatMessageHolder(view: View) : ChatBaseHolder(view) {
 
@@ -18,10 +17,10 @@ class ChatMessageHolder(view: View) : ChatBaseHolder(view) {
             .inflate(R.layout.view_chat_item_message, view as ViewGroup, false) as ConstraintLayout
 
     private val mHeaderText: AppCompatTextView
-        get() = mContent.chatMessageHeaderText
+        get() = mContent.findViewById(R.id.chatMessageHeaderText)
 
     private val mContentText: AppCompatTextView
-        get() = mContent.chatMessageContentText
+        get() = mContent.findViewById(R.id.chatMessageContentText)
 
     private lateinit var mMessageItem: ChatMessageItem
 
