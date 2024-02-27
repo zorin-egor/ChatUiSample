@@ -23,8 +23,9 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
     override fun getItemCount(): Int = list.size
 
     fun addItems(items: List<D>) {
+        val from = list.size
         list.addAll(items)
-        notifyItemRangeInserted(list.size, items.size)
+        notifyItemRangeInserted(from, items.size)
     }
 
     fun addItemsAtTop(items: List<D>) {
@@ -40,7 +41,7 @@ abstract class BaseAdapter<D> : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     fun addItem(item: D) {
         list.add(item)
-        notifyItemInserted(list.size)
+        notifyItemInserted(list.size - 1)
     }
 
     fun addItemAtTop(item: D) {
